@@ -1,0 +1,11 @@
+# Trash files
+.Trash-*
+
+# Compiled files
+*.pyc
+
+# Virtual Environment
+venv/
+
+# Specific configs
+api/instance/iconfig.py

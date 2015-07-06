@@ -1,0 +1,86 @@
+class DefaultInstance(object):
+    """General Default Configuration class"""
+    MONGODB_SETTINGS = {
+        'DB': '',
+        'USERNAME': '',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': ''
+    }
+
+    def __init__(self):
+        pass
+
+
+class DevelopmentInstance(DefaultInstance):
+    """Development Default Configuration class"""
+    MONGODB_SETTINGS = {
+        'DB': 'xxxxx',
+        'USERNAME': 'xxxxx',
+        'PASSWORD': 'xxxxx',
+        'HOST': '127.0.0.1',
+        'PORT': 27017
+    }
+
+    SERVER_SETTINGS = {
+        'host': '127.0.0.1',
+        'port': 5000,
+    }
+
+    def __init__(self):
+        super(DevelopmentInstance, self).__init__()
+
+
+
+class TestingInstance(DefaultInstance):
+    """Testing Default Configuration class
+
+    Intended to use to run tests.
+    """
+    def __init__(self):
+        super(TestingInstance, self).__init__()
+
+
+class StagingInstance(DefaultInstance):
+    """Staging Default Configuration class
+
+    Intended to use to test application in a pre-production environment
+    """
+    MONGODB_SETTINGS = {
+        'DB': '',
+        'USERNAME': '',
+        'PASSWORD': '',
+        'HOST': '127.0.0.1',
+        'PORT': 27017
+    }
+
+    def __init__(self):
+        super(StagingInstance, self).__init__()
+
+
+class ProductionInstance(DefaultInstance):
+    """Production Default Configuration class"""
+    MONGODB_SETTINGS = {
+        'DB': '',
+        'USERNAME': '',
+        'PASSWORD': '',
+        'HOST': '127.0.0.1',
+        'PORT': 27017
+    }
+
+    SERVER_SETTINGS = {
+        'host': '127.0.0.1',
+        'port': '',
+    }
+
+    def __init__(self):
+        super(ProductionInstance, self).__init__()
+
+
+iconfig = {
+    'development': DevelopmentInstance,
+    'testing': TestingInstance,
+    'staging': StagingInstance,
+    'production': ProductionInstance,
+    'default': DevelopmentInstance
+}
